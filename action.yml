@@ -4,7 +4,8 @@ description: "GitHub Action to copy Nix derivations to a specified cache."
 inputs:
   result:
     description: "The Nix build result to be copied."
-    required: true
+    required: false
+    default: "result"
   conn:
     description: "The remote store connection string for the Nix cache."
     required: true
