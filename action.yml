@@ -15,6 +15,7 @@ runs:
   steps:
     - name: Copy Nix store to cache
       run: |
+        echo ::group::Cache
         CACHE_SSH_CONN="${{ inputs.conn }}"
         RESULT="${{ inputs.result }}"
 
@@ -22,4 +23,5 @@ runs:
           $(nix-store -q --requisites $(nix-store -q --deriver "$RESULT")) \
           $(nix-store -q --references $(nix-store -q --deriver "$RESULT")) \
           $(nix-store -qR "$RESULT")
+        echo ::endgroup::
       shell: bash
