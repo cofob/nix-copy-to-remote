@@ -21,5 +21,6 @@ runs:
         nix copy --to "$CACHE_SSH_CONN" \
           $(nix-store -q --requisites $(nix-store -q --deriver "$RESULT")) \
           $(nix-store -q --references $(nix-store -q --deriver "$RESULT")) \
-          $(nix-store -qR "$RESULT")
+          $(nix-store -qR "$RESULT") \
+          | grep -v "^warning: The interpretation of store paths arguments ending in \.drv recently changed"
       shell: bash
