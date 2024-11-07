@@ -8,7 +8,8 @@ inputs:
     default: "result"
   conn:
     description: "The remote store connection string for the Nix cache."
-    required: true
+    required: false
+    default: "$CACHE_SSH_CONN"
 
 runs:
   using: "composite"
